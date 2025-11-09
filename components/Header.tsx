@@ -11,7 +11,7 @@ const SocialLinkItem: React.FC<{ link: SocialLink }> = ({ link }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label={link.name}
-    className="text-slate-400 hover:text-lime-400 transition-colors duration-300"
+    className="text-slate-400 hover:text-red-400 transition-colors duration-300"
   >
     {link.icon}
   </a>
@@ -23,13 +23,13 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
       <img
         src={profile.avatarUrl}
         alt={profile.name}
-        className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-lime-500/30 object-cover shadow-lg"
+        className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-red-500/30 object-cover shadow-lg"
       />
       <div className="text-center md:text-left">
         <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
           {profile.name}
         </h1>
-        <p className="mt-2 text-lg md:text-xl text-lime-400 font-medium">
+        <p className="mt-2 text-lg md:text-xl text-red-400 font-medium">
           {profile.title}
         </p>
         <div className="mt-4 flex justify-center md:justify-start items-center space-x-5">

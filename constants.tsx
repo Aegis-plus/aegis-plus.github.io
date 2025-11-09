@@ -23,11 +23,11 @@ export const PROFILE_DATA: ProfileData = {
   name: "Aegis+",
   title: "Casual Gamer • Pixel Artist • Digital Creator",
   bio: "Exploring the intersection of technology and creativity, I craft digital experiences that tell stories and evoke emotion. My work is a journey through surreal landscapes and abstract concepts, rendered with a modern, minimalist aesthetic. Welcome to my corner of the digital universe.",
-  avatarUrl: "https://picsum.photos/seed/alex-doe/200/200",
+  avatarUrl: SpaceMarine,
   socials: [
     { name: "GitHub", url: "https://github.com/Aegis-plus/", icon: <GithubIcon /> },
     { name: "Email", url: "mailto:mail@aegis.zone.id", icon: <EmailIcon /> },
-    { name: "Steam", url: "#", icon: <span className="font-semibold text-lg">Steam</span> },
+    { name: "Steam", url: "https://steamcommunity.com/id/AegisPlus/", icon: <span className="font-semibold text-lg">Steam</span> },
   ],
 };
 

@@ -7,7 +7,7 @@ interface GalleryProps {
 
 const GalleryImage: React.FC<{ piece: ArtPiece; onImageClick: () => void }> = ({ piece, onImageClick }) => (
   <div 
-    className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-lime-500/20"
+    className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-red-500/20"
     onClick={onImageClick}
     role="button"
     tabIndex={0}
@@ -70,7 +70,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ piece, onClose, onNext, onP
           <p className="text-slate-400 leading-relaxed flex-grow">{piece.description}</p>
           <button 
             onClick={onClose}
-            className="mt-4 self-start bg-lime-600 hover:bg-lime-500 text-white font-bold py-2 px-4 rounded transition-all duration-300 hover:shadow-[0_0_15px_theme(colors.lime.500)]"
+            className="mt-4 self-start bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded transition-all duration-300 hover:shadow-[0_0_15px_theme(colors.red.500)]"
             aria-label="Close image viewer"
           >
             Close
@@ -135,8 +135,8 @@ const Gallery: React.FC<GalleryProps> = ({ artPieces }) => {
   const selectedPiece = selectedIndex !== null ? artPieces[selectedIndex] : null;
 
   return (
-    <section id="gallery">
-      <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-lime-500 pl-4">My Gallery</h2>
+    <section id="gallery" className="bg-slate-900 py-12 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-red-500 pl-4">My Gallery</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {artPieces.map((piece, index) => (
           <GalleryImage key={piece.id} piece={piece} onImageClick={() => openModal(index)} />
