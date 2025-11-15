@@ -12,7 +12,14 @@ type Theme = 'light' | 'dark';
 
 function App() {
   const getInitialTheme = (): Theme => {
-    if (typeof document !== 'undefined') {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || stored === 'light') return stored as Theme;
+      } catch {}
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
       return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     }
     return 'light';
