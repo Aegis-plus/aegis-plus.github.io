@@ -49,10 +49,11 @@ const BackToTopButton: React.FC = () => {
 
   return (
     <button
+      type="button"
       ref={buttonRef}
       onClick={scrollToTop}
-      className={`fixed bottom-5 right-5 z-50 p-3 rounded-full bg-red-600 text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900 focus:ring-red-500 shadow-lg hover:shadow-[0_0_15px_theme(colors.red.500)] transform transition-all duration-300 ease-out ${
-        isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
+      className={`fixed bottom-5 right-5 z-50 rounded-full bg-primary p-3 text-on-primary shadow-glow transition-all duration-300 ease-out hover:bg-accent focus-visible:outline-none focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-base ${
+        isVisible ? 'scale-100 opacity-100' : 'pointer-events-none scale-0 opacity-0'
       }`}
       aria-label="Go to top"
       tabIndex={isVisible ? 0 : -1}

@@ -11,7 +11,7 @@ const SocialLinkItem: React.FC<{ link: SocialLink }> = ({ link }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label={link.name}
-    className="text-slate-600 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400 transition-colors duration-300"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-base"
   >
     {link.icon}
   </a>
@@ -19,20 +19,20 @@ const SocialLinkItem: React.FC<{ link: SocialLink }> = ({ link }) => (
 
 const Header: React.FC<HeaderProps> = ({ profile }) => {
   return (
-    <header className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+    <header className="flex flex-col items-center gap-6 rounded-3xl border border-base bg-surface p-6 shadow-card backdrop-blur-sm transition-colors duration-300 md:flex-row md:gap-10 md:p-8">
       <img
         src={profile.avatarUrl}
         alt={profile.name}
-        className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-red-500/30 object-cover shadow-lg"
+        className="h-32 w-32 rounded-full border-4 border-accent object-cover shadow-glow md:h-40 md:w-40"
       />
       <div className="text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
+        <h1 className="text-4xl font-bold tracking-tight text-fg md:text-5xl">
           {profile.name}
         </h1>
-        <p className="mt-2 text-lg md:text-xl text-red-600 dark:text-red-400 font-medium">
+        <p className="mt-2 text-lg font-medium text-muted md:text-xl">
           {profile.title}
         </p>
-        <div className="mt-4 flex justify-center md:justify-start items-center space-x-5">
+        <div className="mt-4 flex items-center justify-center space-x-5 md:justify-start">
           {profile.socials.map((social) => (
             <SocialLinkItem key={social.name} link={social} />
           ))}
