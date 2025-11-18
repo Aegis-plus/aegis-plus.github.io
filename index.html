@@ -6,21 +6,70 @@
     <title>Personal Profile & Art Gallery</title>
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAQJJREFUWIVjZCAS6Cnp/ydWLTK4dO8iIz55JnIMpSbA6zoGJJ/ndjYzMDAwMKSE+JJkgb6yAQMDnpAY8BBgwSWB7nMdQzmyLLh49wIDAyQk/jNgCYkBDwGMeMHlcwtlfapYiJ4mBjwEcKYBdJ/DXI4OkOIYrzwuMHhDAJfPEzdCfDTfH7uP0eVh+nGFxOANAVwA5jN0HxFKC7jA4A2BE3cvMjAQkYrRAanqB28IXDn/CIWPXhKip25CqR0XGHwhACujJ5fXotQJMEBqnQBLS+lu8Sjmw8CAhwDJLSJia0dCPoeBwR8CMIAeEpPLaxkYsOQCdPmh3yqGgWHbLxgFo2AUAACTbmxtgGIP2wAAAABJRU5ErkJggg==">
     <script>
-      // Enable class-based dark mode for Tailwind (CDN)
+      const THEME_STORAGE_KEY = 'theme';
       tailwind = typeof tailwind === 'undefined' ? {} : tailwind;
-      tailwind.config = Object.assign({}, tailwind.config || {}, { darkMode: 'class' });
-
-      // Set initial theme early to avoid flash of incorrect theme
-      (function() {
-        try {
-          var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = stored ? stored : (prefersDark ? 'dark' : 'light');
-          if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
+      tailwind.config = Object.assign({}, tailwind.config || {}, {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              base: 'var(--bg)',
+              surface: 'var(--surface)',
+              'surface-2': 'var(--surface-2)',
+              fg: 'var(--text)',
+              muted: 'var(--muted)',
+              primary: 'var(--primary)',
+              'primary-contrast': 'var(--primary-contrast)',
+              accent: 'var(--accent)',
+              border: 'var(--border)',
+              ring: 'var(--ring)'
+            },
+            backgroundColor: {
+              base: 'var(--bg)',
+              surface: 'var(--surface)',
+              'surface-2': 'var(--surface-2)',
+              card: 'var(--surface-2)',
+              primary: 'var(--primary)',
+              accent: 'var(--accent)',
+              overlay: 'var(--overlay)',
+              'overlay-strong': 'var(--overlay-strong)'
+            },
+            textColor: {
+              base: 'var(--text)',
+              muted: 'var(--muted)',
+              primary: 'var(--primary)',
+              accent: 'var(--accent)',
+              'on-primary': 'var(--primary-contrast)'
+            },
+            borderColor: {
+              base: 'var(--border)',
+              accent: 'var(--accent)'
+            },
+            ringColor: {
+              DEFAULT: 'var(--ring)',
+              focus: 'var(--ring)'
+            },
+            ringOffsetColor: {
+              base: 'var(--surface)',
+              contrast: 'var(--surface-2)'
+            },
+            boxShadow: {
+              card: '0 20px 45px -25px rgba(15, 23, 42, 0.4)',
+              glow: '0 0 0 4px rgba(14, 165, 233, 0.18)'
+            }
           }
+        }
+      });
+
+      (function () {
+        try {
+          var root = document.documentElement;
+          var stored = localStorage.getItem(THEME_STORAGE_KEY);
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+          root.classList.toggle('dark', theme === 'dark');
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
         } catch (e) {}
       })();
     </script>
@@ -38,8 +87,8 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/v2/assets/index-430da4d6.js"></script>
-  <link rel="stylesheet" href="/v2/assets/index-ffda4d12.css">
+  <script type="module" crossorigin src="/v2/assets/index-1db4da52.js"></script>
+  <link rel="stylesheet" href="/v2/assets/index-af3d6fe9.css">
 </head>
   <body class="antialiased">
     <div id="root"></div>
